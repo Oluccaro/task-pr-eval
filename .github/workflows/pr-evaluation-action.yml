@@ -7,6 +7,7 @@ on:
 jobs:
   evaluate-pr:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -16,11 +17,11 @@ jobs:
         run: |
           echo "PR_TITLE=$(jq -r '.pull_request.title' "$GITHUB_EVENT_PATH")" >> $GITHUB_ENV
           echo "PR_BODY=$(jq -r '.pull_request.body' "$GITHUB_EVENT_PATH")" >> $GITHUB_ENV
-
+          echo "PR_NUMBER=$(jq -r '.pull_request.number' "$GITHUB_EVENT_PATH")" >> $GITHUB_ENV
       - name: Run PR Evaluation Script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           MONDAY_API_KEY: ${{ secrets.MONDAY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 ci-scripts/evaluate_pr.py "$GITHUB_ENV"
+          bash ci-scripts/evaluate_pr.sh "$GITHUB_ENV"
