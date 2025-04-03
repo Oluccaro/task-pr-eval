@@ -1,1 +1,0 @@
-["^ ","~$wrap-content-type",["^ ","~:row",3,"~:col",1,"~:fixed-arities",["~#set",[2]],"~:name","^0","~:ns","~$open-library.controller.wrapper","~:top-ns","^7","~:arities",["^ ","~i2",["^ ","~:ret","~:fn","~:arglist-str","[handler content-type]"]],"~:type","^;"],"~:filename","/home/oluccaro/projects/bantads/src/open_library/controller/wrapper.clj"]
