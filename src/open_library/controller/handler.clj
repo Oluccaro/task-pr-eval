@@ -19,3 +19,4 @@
 (defn delete-user [request]
   (let [[id] (:id (:path-params request))]
     {:status 200, :body (generate-string {"user" [{"id" 1 "name" "bob"}]})}))
+
